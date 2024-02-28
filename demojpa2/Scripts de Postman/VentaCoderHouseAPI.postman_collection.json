@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "0015b5f9-6614-4bc8-a327-a1356971df4e",
+		"name": "VentaCoderHouseAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32528992"
+	},
+	"item": [
+		{
+			"name": "Alta Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Joni\",\r\n    \"lastname\": \"Monetti\",\r\n    \"docNumber\": \"45244923\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Jonathan\",\r\n    \"apellido\": \"Monetti\",\r\n    \"dni\": \"45244921\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clientes/modificar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clientes",
+						"modificar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alta Factura",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"{{ // Inicio del bloque de script\r",
+							"    var current_timestamp = new Date();\r",
+							"    pm.environment.set(\"current_timestamp\", current_timestamp.toISOString());\r",
+							"}} // Fin del bloque de script"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": {\r\n    \"id\": 1\r\n  },\r\n  \"total\": 0.0,\r\n  \"detalleFactura\": [\r\n    {\r\n      \"producto\": {\r\n        \"id\": 1\r\n      },\r\n      \"cantidad\": 1,\r\n      \"precioProducto\": 0.0\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/agregar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Baja factura",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/eliminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"eliminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Facturas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Xbox one\",\r\n    \"code\": \"22122003\",\r\n    \"stock\": 5,\r\n    \"price\": 150000.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/productos/modificar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"productos",
+						"modificar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

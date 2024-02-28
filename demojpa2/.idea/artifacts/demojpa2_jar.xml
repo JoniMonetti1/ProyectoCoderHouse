@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="demojpa2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/demojpa2_jar</output-path>
+    <root id="archive" name="demojpa2.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/demojpa2/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

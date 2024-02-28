@@ -1,3 +1,7 @@
+CREATE DATABASE coderprueba1;
+
+USE coderprueba1;
+
 -- Crear la tabla Cliente
 CREATE TABLE cliente (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -15,19 +19,20 @@ CREATE TABLE producto (
     price DOUBLE
 );
 
--- Crear la tabla Venta
-CREATE TABLE venta (
+-- Crear la tabla facturas
+CREATE TABLE facturas (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    cliente_id INT,
-    fecha DATE,
-    FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+    id_cliente INT,
+    fecha DATETIME,
+    total DOUBLE,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id)
 );
 
--- Crear la tabla de unión para la relación muchos a muchos entre Venta y Producto
-CREATE TABLE venta_producto (
-    venta_id INT,
-    producto_id INT,
-    PRIMARY KEY (venta_id, producto_id),
-    FOREIGN KEY (venta_id) REFERENCES venta(id),
-    FOREIGN KEY (producto_id) REFERENCES producto(id)
+CREATE TABLE detalleFactura (
+    id INT AUTO_INCREMENT,
+    id_factura INT,
+    cantidad INT NOT NULL,
+    id_producto INT,
+    precio DOUBLE,
+    FOREIGN KEY(id_factura) REFERENCE facturas(id), FOREIGN KEY(id_producto) REFERENCES prouductos(id), PRIMARY KEY(id)
 );
